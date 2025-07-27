@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROOT_X </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff99;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    h1, h2, h3, p {
+      margin: 10px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-pic, .sub-pic {
+      border-radius: 50%;
+      border: 2px solid #00ff99;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn {
+      background-color: #00ff99;
+      color: #000;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn:hover {
+      background-color: #00cc77;
+    }
+
+    .card {
+      border: 1px solid #00ff99;
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      border-radius: 10px;
+      position: relative;
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .projects img {
+      width: 100%;
+      max-width: 400px;
+      border: 2px solid #00ff99;
+      border-radius: 10px;
+    }
+
+    .section-title {
+      font-size: 1.5em;
+      margin-top: 30px;
+      text-shadow: 0 0 5px #00ff99;
+      position: relative;
+      z-index: 2;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+
+  <h1>ROOT_X</h1>
+  <h2>HEY IM ROOT_X.</h2>
+  <img src="https://via.placeholder.com/100" class="profile-pic" alt="Fixo XD">
+  <h3>ANONYMOUS ROOT_X WEB WELLCOME</h3>
+  <button class="btn">MY PROJECT</button>
+  <button class="btn">CONTACT US</button>
+
+  <div class="card">
+    <h2>REAL ROOT_X🕊️</h2>
+    <img src="https://via.placeholder.com/100" class="sub-pic" alt="Fixo Real Pic">
+    <p>HEY I'M ROOT_X. MY REAL NAME IS PASINDU SADARUWAN .</p>
+    <p>I AM 17+ YEARS OLD. I'M FROM AVISSAWELLA .</p>
+    <p>I HAVE NA ONE YEAR EXPERIENCE FOR THE GRAPHIC DESIGN.</p>
+    <p>I CAN LOGO DESIGN, BANNER EDITING, COVER PHOTO, THUMBNAILS AND AI PHOTO EDITING.</p>
+    <p>I CAN CREATE WEB DESIGN AND BOT DEVELOPING.</p>
+  </div>
+
+  <div class="section-title">🤖 My Projects 🤖</div>
+
+  <div class="card">
+    <h2>📱 Follow Me On Social Media</h2>
+    <a href="https://facebook.com/yourprofile" target="_blank" class="btn"><i class="fab fa-facebook-f"></i> Facebook</a>
+    <a href="https://instagram.com/yourprofile" target="_blank" class="btn"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://youtube.com/yourchannel" target="_blank" class="btn"><i class="fab fa-youtube"></i> YouTube</a>
+    <a href="https://wa.me/94742349884" target="_blank" class="btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+
+    for (let i = 0; i < columns; i++) {
+      drops[i] = Math.random() * canvas.height;
+    }
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#00ff99";
+      ctx.font = fontSize + "px Courier New";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 33);
+    window.addEventListener("resize", () => location.reload());
+  
+  </script>
+</body>
+  </html>
